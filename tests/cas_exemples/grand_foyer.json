@@ -1,0 +1,55 @@
+{
+  "client_info": {
+    "nom": "M. & Mme. Lambert",
+    "adresse": "24 Chemin des Vignes, 34000 Montpellier",
+    "email": "lambert.sol@email.com",
+    "date": "2026-06-21"
+  },
+  "logement": {
+    "surface_m2": 180.0,
+    "niveau_isolation": "rt2012",
+    "zone_climatique": "H3",
+    "deg_jours_unifies": 1400.0,
+    "t_consigne": 20.0
+  },
+  "besoins_elec": {
+    "appareils": [
+      {"nom": "Réfrigérateur Américain", "puissance_w": 350.0, "heures_jour": 24.0, "jours_semaine": 7.0},
+      {"nom": "Congélateur coffre", "puissance_w": 200.0, "heures_jour": 24.0, "jours_semaine": 7.0},
+      {"nom": "Pompe de piscine", "puissance_w": 1100.0, "heures_jour": 8.0, "jours_semaine": 7.0},
+      {"nom": "Climatisation (été)", "puissance_w": 2000.0, "heures_jour": 5.0, "jours_semaine": 7.0},
+      {"nom": "Lave-vaisselle", "puissance_w": 1800.0, "heures_jour": 1.5, "jours_semaine": 7.0},
+      {"nom": "Lave-linge", "puissance_w": 2200.0, "heures_jour": 1.5, "jours_semaine": 7.0},
+      {"nom": "Sèche-linge", "puissance_w": 2500.0, "heures_jour": 1.0, "jours_semaine": 5.0},
+      {"nom": "Four & plaques", "puissance_w": 3500.0, "heures_jour": 1.0, "jours_semaine": 7.0},
+      {"nom": "TVs & Consoles", "puissance_w": 300.0, "heures_jour": 6.0, "jours_semaine": 7.0},
+      {"nom": "Éclairage & domotique", "puissance_w": 400.0, "heures_jour": 7.0, "jours_semaine": 7.0}
+    ]
+  },
+  "besoins_ecs": {
+    "nb_personnes": 6,
+    "litres_par_jour_par_personne": 60.0,
+    "t_entree": 12.0,
+    "t_sortie": 55.0
+  },
+  "solaire_pv": {
+    "kwp": 9.0,
+    "inclinaison": 30.0,
+    "azimut": 0.0,
+    "performance_ratio": 0.85
+  },
+  "solaire_thermique": {
+    "surface_capteurs": 6.0,
+    "rendement_capteur": 0.5
+  },
+  "batterie": {
+    "capacite_kwh": 10.0,
+    "rendement_charge_decharge": 0.90
+  },
+  "economie": {
+    "prix_elec_eur_kwh": 0.25,
+    "tarif_rachat_eur_kwh": 0.10,
+    "prix_eur_par_kwp": 1700.0,
+    "prix_eur_par_m2": 700.0
+  }
+}

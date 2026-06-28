@@ -1,0 +1,52 @@
+{
+  "client_info": {
+    "nom": "Famille Martin",
+    "adresse": "45 Avenue de la République, 69000 Lyon",
+    "email": "contact.martin@email.com",
+    "date": "2026-06-21"
+  },
+  "logement": {
+    "surface_m2": 100.0,
+    "niveau_isolation": "bon",
+    "zone_climatique": "H2",
+    "deg_jours_unifies": 2000.0,
+    "t_consigne": 19.0
+  },
+  "besoins_elec": {
+    "appareils": [
+      {"nom": "Réfrigérateur-Congélateur", "puissance_w": 250.0, "heures_jour": 24.0, "jours_semaine": 7.0},
+      {"nom": "Téléviseur salon", "puissance_w": 120.0, "heures_jour": 5.0, "jours_semaine": 7.0},
+      {"nom": "Lave-vaisselle", "puissance_w": 1800.0, "heures_jour": 1.0, "jours_semaine": 5.0},
+      {"nom": "Lave-linge", "puissance_w": 2000.0, "heures_jour": 1.0, "jours_semaine": 4.0},
+      {"nom": "Four électrique", "puissance_w": 2500.0, "heures_jour": 0.5, "jours_semaine": 7.0},
+      {"nom": "2x Ordinateurs", "puissance_w": 150.0, "heures_jour": 8.0, "jours_semaine": 5.0},
+      {"nom": "Éclairage & divers", "puissance_w": 250.0, "heures_jour": 6.0, "jours_semaine": 7.0}
+    ]
+  },
+  "besoins_ecs": {
+    "nb_personnes": 4,
+    "litres_par_jour_par_personne": 50.0,
+    "t_entree": 12.0,
+    "t_sortie": 55.0
+  },
+  "solaire_pv": {
+    "kwp": 3.0,
+    "inclinaison": 30.0,
+    "azimut": 0.0,
+    "performance_ratio": 0.85
+  },
+  "solaire_thermique": {
+    "surface_capteurs": 4.0,
+    "rendement_capteur": 0.5
+  },
+  "batterie": {
+    "capacite_kwh": 2.5,
+    "rendement_charge_decharge": 0.9
+  },
+  "economie": {
+    "prix_elec_eur_kwh": 0.25,
+    "tarif_rachat_eur_kwh": 0.10,
+    "prix_eur_par_kwp": 1900.0,
+    "prix_eur_par_m2": 700.0
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "client_info": {
+    "nom": "Jean Dupont",
+    "adresse": "12 Rue des Lilas, 44000 Nantes",
+    "email": "jean.dupont@email.com",
+    "date": "2026-06-21"
+  },
+  "logement": {
+    "surface_m2": 50.0,
+    "niveau_isolation": "moyen",
+    "zone_climatique": "H2",
+    "deg_jours_unifies": 2000.0,
+    "t_consigne": 19.0
+  },
+  "besoins_elec": {
+    "appareils": [
+      {"nom": "Réfrigérateur", "puissance_w": 150.0, "heures_jour": 24.0, "jours_semaine": 7.0},
+      {"nom": "Téléviseur", "puissance_w": 80.0, "heures_jour": 4.0, "jours_semaine": 7.0},
+      {"nom": "Ordinateur", "puissance_w": 60.0, "heures_jour": 6.0, "jours_semaine": 5.0},
+      {"nom": "Éclairage & divers", "puissance_w": 100.0, "heures_jour": 5.0, "jours_semaine": 7.0}
+    ]
+  },
+  "besoins_ecs": {
+    "nb_personnes": 2,
+    "litres_par_jour_par_personne": 50.0,
+    "t_entree": 12.0,
+    "t_sortie": 55.0
+  },
+  "solaire_pv": {
+    "kwp": 1.5,
+    "inclinaison": 30.0,
+    "azimut": 0.0,
+    "performance_ratio": 0.85
+  },
+  "solaire_thermique": {
+    "surface_capteurs": 0.0,
+    "rendement_capteur": 0.5
+  },
+  "batterie": {
+    "capacite_kwh": 0.0,
+    "rendement_charge_decharge": 0.9
+  },
+  "economie": {
+    "prix_elec_eur_kwh": 0.25,
+    "tarif_rachat_eur_kwh": 0.10,
+    "prix_eur_par_kwp": 1900.0,
+    "prix_eur_par_m2": 700.0
+  }
+}

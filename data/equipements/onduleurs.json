@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ond_string_3kw",
+    "nom": "Onduleur string 3 kW",
+    "type": "string",
+    "puissance_kw": 3.0,
+    "rendement_pct": 97.5,
+    "compatible_batterie": false,
+    "prix_eur": 600.0,
+    "garantie_ans": 10
+  },
+  {
+    "id": "ond_string_6kw",
+    "nom": "Onduleur string 6 kW",
+    "type": "string",
+    "puissance_kw": 6.0,
+    "rendement_pct": 97.8,
+    "compatible_batterie": false,
+    "prix_eur": 950.0,
+    "garantie_ans": 10
+  },
+  {
+    "id": "ond_micro_unitaire",
+    "nom": "Micro-onduleur (par panneau)",
+    "type": "micro",
+    "puissance_kw": 0.4,
+    "rendement_pct": 96.5,
+    "compatible_batterie": false,
+    "prix_eur": 180.0,
+    "garantie_ans": 20
+  },
+  {
+    "id": "ond_hybride_6kw",
+    "nom": "Onduleur hybride 6 kW (compatible batterie)",
+    "type": "hybride",
+    "puissance_kw": 6.0,
+    "rendement_pct": 96.0,
+    "compatible_batterie": true,
+    "prix_eur": 1800.0,
+    "garantie_ans": 10
+  }
+]
