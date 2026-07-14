@@ -1,0 +1,44 @@
+[
+  {
+    "id": "pv_std_425",
+    "nom": "Monocristallin standard 425 Wc",
+    "puissance_wc": 425,
+    "rendement_pct": 21.0,
+    "longueur_m": 1.72,
+    "largeur_m": 1.13,
+    "surface_m2": 1.94,
+    "coefficient_temperature_pct_par_degre": -0.30,
+    "garantie_produit_ans": 15,
+    "garantie_production_ans": 25,
+    "prix_unitaire_eur": 220.0,
+    "categorie": "standard"
+  },
+  {
+    "id": "pv_topcon_440",
+    "nom": "TOPCon N-Type haut rendement 440 Wc",
+    "puissance_wc": 440,
+    "rendement_pct": 22.8,
+    "longueur_m": 1.75,
+    "largeur_m": 1.13,
+    "surface_m2": 1.98,
+    "coefficient_temperature_pct_par_degre": -0.26,
+    "garantie_produit_ans": 25,
+    "garantie_production_ans": 30,
+    "prix_unitaire_eur": 310.0,
+    "categorie": "premium"
+  },
+  {
+    "id": "pv_premium_500",
+    "nom": "Premium haute puissance 500 Wc",
+    "puissance_wc": 500,
+    "rendement_pct": 22.6,
+    "longueur_m": 1.90,
+    "largeur_m": 1.13,
+    "surface_m2": 2.15,
+    "coefficient_temperature_pct_par_degre": -0.26,
+    "garantie_produit_ans": 30,
+    "garantie_production_ans": 30,
+    "prix_unitaire_eur": 380.0,
+    "categorie": "premium"
+  }
+]

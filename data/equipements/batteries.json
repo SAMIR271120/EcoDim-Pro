@@ -1,0 +1,35 @@
+[
+  {
+    "id": "bat_lfp_5",
+    "nom": "Batterie LFP 5 kWh",
+    "technologie": "LiFePO4",
+    "capacite_kwh": 5.0,
+    "profondeur_decharge_pct": 95.0,
+    "cycles_garantis": 6000,
+    "rendement_pct": 92.0,
+    "prix_eur": 1700.0,
+    "garantie_ans": 10
+  },
+  {
+    "id": "bat_lfp_10",
+    "nom": "Batterie LFP 10 kWh",
+    "technologie": "LiFePO4",
+    "capacite_kwh": 10.0,
+    "profondeur_decharge_pct": 95.0,
+    "cycles_garantis": 6000,
+    "rendement_pct": 92.0,
+    "prix_eur": 3300.0,
+    "garantie_ans": 10
+  },
+  {
+    "id": "bat_lfp_modulaire_3_5",
+    "nom": "Module batterie LFP modulaire 3,5 kWh",
+    "technologie": "LiFePO4",
+    "capacite_kwh": 3.5,
+    "profondeur_decharge_pct": 95.0,
+    "cycles_garantis": 6000,
+    "rendement_pct": 92.0,
+    "prix_eur": 820.0,
+    "garantie_ans": 10
+  }
+]

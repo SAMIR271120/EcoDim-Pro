@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' blob:; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none';">
+  <title>Sandbox Exécution Isolée EcoDim Pro</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #FFFFFF;
+      color: #1E293B;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    #error-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(254, 242, 242, 0.95);
+      border: 2px solid #EF4444;
+      color: #991B1B;
+      padding: 24px;
+      font-family: monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+      z-index: 9999;
+      overflow: auto;
+    }
+    #error-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="error-overlay">
+    <div id="error-title">⚠️ Erreur d'exécution Runtime</div>
+    <div id="error-message"></div>
+  </div>
+
+  <div id="app-root">
+    <!-- Le code utilisateur sera injecté ici -->
+    <h3>Iframe Sandbox Activable</h3>
+    <p>En attente de code utilisateur à compiler...</p>
+  </div>
+
+  <script>
+    // Intercepter toutes les erreurs non gérées et les envoyer au parent
+    window.onerror = function (message, source, lineno, colno, error) {
+      const errorDetails = {
+        type: 'runtime-error',
+        message: message,
+        line: lineno,
+        column: colno,
+        stack: error ? error.stack : null
+      };
+      
+      // Afficher l'overlay d'erreur dans la sandbox
+      const overlay = document.getElementById('error-overlay');
+      const msgDiv = document.getElementById('error-message');
+      msgDiv.textContent = `${message}\nà la ligne ${lineno}:${colno}\n${error && error.stack ? error.stack : ''}`;
+      overlay.style.display = 'block';
+
+      // Envoyer l'erreur au parent (Monaco Editor UI)
+      window.parent.postMessage(errorDetails, '*');
+      return true;
+    };
+
+    // Intercepter les rejets de promesses non gérés
+    window.addEventListener('unhandledrejection', function(event) {
+      const errorDetails = {
+        type: 'promise-error',
+        message: event.reason ? event.reason.message || event.reason : 'Rejet de promesse non gérée'
+      };
+      window.parent.postMessage(errorDetails, '*');
+    });
+
+    // Recevoir les instructions de mise à jour du code (Hot-Reload)
+    window.addEventListener('message', function (event) {
+      const payload = event.data;
+      if (payload.type === 'execute-code') {
+        try {
+          // Masquer l'overlay d'erreur avant ré-exécution
+          document.getElementById('error-overlay').style.display = 'none';
+
+          // Nettoyer l'élément racine
+          const appRoot = document.getElementById('app-root');
+          appRoot.innerHTML = payload.html || '';
+
+          // Appliquer les styles dynamiques (Whitelabel)
+          let styleEl = document.getElementById('sandbox-styles');
+          if (!styleEl) {
+            styleEl = document.createElement('style');
+            styleEl.id = 'sandbox-styles';
+            document.head.appendChild(styleEl);
+          }
+          styleEl.textContent = payload.css || '';
+
+          // Exécuter le code JavaScript avec garde-fou contre les boucles infinies (CPU quota)
+          if (payload.js) {
+            // Nettoyer les anciens scripts utilisateur
+            const oldScripts = document.querySelectorAll('.user-script');
+            oldScripts.forEach(el => el.remove());
+
+            // Préprocesseur de boucle pour éviter le gel du thread principal
+            let processedJs = payload.js;
+            try {
+              let loopCount = 0;
+              processedJs = payload.js.replace(/(while\s*\(.*?\)\s*\{|for\s*\(.*?\)\s*\{)/g, (match) => {
+                const id = ++loopCount;
+                return `let _loopStart_${id} = Date.now(); ${match} if (Date.now() - _loopStart_${id} > 1000) throw new Error("Dépassement du quota CPU (Boucle infinie détectée)"); `;
+              });
+            } catch (e) {
+              // En cas d'erreur de parsing regex, utiliser le code brut
+            }
+
+            const scriptEl = document.createElement('script');
+            scriptEl.className = 'user-script';
+            scriptEl.textContent = `
+              (function() {
+                try {
+                  ${processedJs}
+                } catch(err) {
+                  window.onerror(err.message, 'sandbox.js', 0, 0, err);
+                }
+              })();
+            `;
+            document.body.appendChild(scriptEl);
+          }
+
+          // Notifier le parent que l'exécution a réussi
+          window.parent.postMessage({ type: 'execution-success' }, '*');
+
+        } catch (err) {
+          window.onerror(err.message, 'sandbox.js', 0, 0, err);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
